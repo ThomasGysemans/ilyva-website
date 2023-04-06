@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import preprocess from 'svelte-preprocess';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 
@@ -11,7 +11,6 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$db: './src/db',
 			$lib: './src/lib',
 		}
 	}
