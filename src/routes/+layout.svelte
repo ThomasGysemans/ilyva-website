@@ -19,4 +19,8 @@
     font-family: "Hack-Regular";
     src: url("/assets/Hack-Regular.ttf")
   }
+  @font-face {
+    font-family: "Hack-Bold";
+    src: url("/assets/Hack-Bold.ttf")
+  }
 </style>
