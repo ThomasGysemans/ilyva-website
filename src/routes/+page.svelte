@@ -1,28 +1,16 @@
-<head>
+<svelte:head>
 	<title>Ilyva</title>
 	<meta charset="utf-8" />
-</head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</svelte:head>
 
 <script>
-  import emblaCarouselSvelte from 'embla-carousel-svelte'
-
-  let emblApi
-
-  const emblaConfig = {
-    option: { loop: false },
-  }
-
-  const onInit = (event) => {
-    emblApi = event.detail
-    console.log(emblApi.slideNodes()) // Access API)
-  }
+  import Carousel from "./Carousel.svelte";
 </script>
 
 <main>
 	<section class="background_video">
-		<video src="/assets/video.mp4" autoplay loop playsinline disablepictureinpicture>
-			<track kind="captions" />
-		</video>
+		<video src="/assets/video.mp4" autoplay loop muted/>
 	</section>
 	<section id="accueil">
 		<img src="/assets/ilyva_white.png" alt="Ilyva" />
@@ -32,27 +20,10 @@
 			vous êtes bloqué(s) en vous exerçant à Bash.
 		</p>
 	</section>
-  <section>
-    <h1>UN JEU POUR REVISER BASH</h1>
-    <div>
-      <div class="embla" use:emblaCarouselSvelte={emblaConfig} on:init={onInit}>
-        <div class="embla__container">
-          <div class="embla__slide">
-            <img src="/assets/duct-tape.png" alt="adésif">
-          </div>
-          <div class="embla__slide">
-            <img src="/assets/duct-tape.png" alt="adésif">
-          </div>
-          <div class="embla__slide">
-            <img src="/assets/duct-tape.png" alt="adésif">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Carousel/>
+  <h1>CRÉÉ PAR ...</h1>
   <section id="credits">
     <div>
-      <h1>CRÉÉ PAR ...</h1>
       <h2>THOMAS GYSEMANS</h2>
       <p>
         Surnommé le "codeur fou" un petit
@@ -87,8 +58,6 @@
       <a href="https://portfolio.sciencesky.fr/">https://portfolio.sciencesky.fr/</a>
     </div>
   </section>
-
-  
 </main>
 
 <style>
@@ -135,11 +104,11 @@
 		width: 350px;
 	}
 
-	#accueil > h1 {
+	h1 {
 		display: block;
 		position: static;
 		top: 200px;
-		margin: 50px 0 0 0;
+		margin: 50px 0 50px 215px;
 		height: fit-content;
 		font-family: 'Hack-Regular';
 		font-size: 50px;
@@ -156,17 +125,6 @@
 		font-family: 'Hack-Regular';
 	}
 
-  .embla {
-    overflow: hidden;
-  }
-  .embla__container {
-    display: flex;
-  }
-  .embla__slide {
-    flex: 0 0 100%;
-    min-width: 0;
-  }
-
   #credits {
     display: flex;
     flex-direction: row;
@@ -175,10 +133,15 @@
   #credits>div {
     width: 33%;
   }
-  #credits>div>h1 {
-    font-family: "Hack-Regular";
+  #credits>h1 {
+    display: block;
+		position: static;
+		top: 200px;
+		margin: 50px 0 0 0;
+		height: fit-content;
+		font-family: 'Hack-Regular';
+		font-size: 50px;
     font-weight: lighter;
-    margin: 0 0 50px 0;
   }
   #credits>div>h2 {
     font-family: "Hack-Bold";
