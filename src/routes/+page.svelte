@@ -3,6 +3,21 @@
 	<meta charset="utf-8" />
 </head>
 
+<script>
+  import emblaCarouselSvelte from 'embla-carousel-svelte'
+
+  let emblApi
+
+  const emblaConfig = {
+    option: { loop: false },
+  }
+
+  const onInit = (event) => {
+    emblApi = event.detail
+    console.log(emblApi.slideNodes()) // Access API)
+  }
+</script>
+
 <main>
 	<section class="background_video">
 		<video src="/assets/video.mp4" autoplay loop playsinline disablepictureinpicture>
@@ -20,7 +35,19 @@
   <section>
     <h1>UN JEU POUR REVISER BASH</h1>
     <div>
-      
+      <div class="embla" use:emblaCarouselSvelte={emblaConfig} on:init={onInit}>
+        <div class="embla__container">
+          <div class="embla__slide">
+            <img src="/assets/duct-tape.png" alt="adésif">
+          </div>
+          <div class="embla__slide">
+            <img src="/assets/duct-tape.png" alt="adésif">
+          </div>
+          <div class="embla__slide">
+            <img src="/assets/duct-tape.png" alt="adésif">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section id="credits">
@@ -128,6 +155,17 @@
 		font-size: x-large;
 		font-family: 'Hack-Regular';
 	}
+
+  .embla {
+    overflow: hidden;
+  }
+  .embla__container {
+    display: flex;
+  }
+  .embla__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
 
   #credits {
     display: flex;
