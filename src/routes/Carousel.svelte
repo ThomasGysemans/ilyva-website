@@ -1,5 +1,5 @@
 <section>
-    <h1>UN JEU POUR REVISER BASH</h1>
+    <h1>UN JEU POUR RÉVISER BASH</h1>
     <ul>
         <li>
             <div>
@@ -36,7 +36,7 @@
     h1 {
         color: white;
         display: block;
-		margin: 50px 0 50px 215px;
+		margin: 50px 0 50px 15%;
 		height: fit-content;
 		font-family: 'Hack-Regular';
 		font-size: 50px;
@@ -51,7 +51,7 @@
         overflow-y: hidden;
         scrollbar-width: none;
     }
-    li>div {
+    li > div {
         display: flex;
         justify-content: center;
         background-color: white;
@@ -59,19 +59,19 @@
         height: 500px;
         margin: 60px;
     }
-    ul>li:nth-of-type(2n) {
+    ul > li:nth-of-type(2n) {
         transform: rotate(5deg);
     }
-    ul>li:nth-of-type(2n+1) {
+    ul > li:nth-of-type(2n+1) {
         transform: rotate(-5deg);
     }
-    li>div>img:first-of-type {
+    li > div > img:first-of-type {
         position: absolute;
         height: 250px;
-        transform: rotate(-45deg) translateX(90px) translateY(-90px);
+        transform: rotate(-45deg) translate(90px,-90px);
     }
 
-    li>div>img:last-of-type {
+    li > div > img:last-of-type {
         display: block;
         height: 480px;
         margin: auto;

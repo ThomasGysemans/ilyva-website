@@ -1,18 +1,14 @@
 <slot />
 
 <style>
-  :global(html) {
-    height: 100%;
-    width: 100%;
-  }
   :global(body) {
     margin: 0;
-    height: inherit;
-    width: inherit;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
   }
   :global(body>div) {
-    margin: 0;
-    height: inherit;
+    height: 100vh;
     width: inherit;
   }
   @font-face {
