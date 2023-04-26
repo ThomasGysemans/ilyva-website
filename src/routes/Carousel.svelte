@@ -31,7 +31,7 @@
 
 <style>
     section {
-        margin: 500px 0;
+        margin: 30% 0;
     }
     h1 {
         color: white;
@@ -51,12 +51,18 @@
         overflow-y: hidden;
         scrollbar-width: none;
     }
+    li {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     li > div {
         display: flex;
         justify-content: center;
         background-color: white;
-        width: 888px;
-        height: 500px;
+        width: 65%;
+        height: 50%;
         margin: 60px;
     }
     ul > li:nth-of-type(2n) {
@@ -67,13 +73,14 @@
     }
     li > div > img:first-of-type {
         position: absolute;
-        height: 250px;
-        transform: rotate(-45deg) translate(90px,-90px);
+        height: 20%;
+        opacity: 20%;
+        transform: rotate(-45deg) translate(50px,-50px);
     }
 
     li > div > img:last-of-type {
         display: block;
-        height: 480px;
+        height: 95%;
         margin: auto;
     }
 </style>

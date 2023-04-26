@@ -7,6 +7,7 @@
 <script>
   import Carousel from "./Carousel.svelte";
   import CreditsThomas from "./Credits_Thomas.svelte";
+  import CreditsNoe from "./Credits_Noe.svelte";
 </script>
 
 <main>
@@ -24,6 +25,7 @@
   <Carousel/>
   <h1>CRÉÉ PAR ...</h1>
   <CreditsThomas/>
+  <CreditsNoe/>
 </main>
 
 <style>

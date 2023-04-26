@@ -26,9 +26,9 @@
 <div>
     <h2>TECHNOS UTILISÉES</h2>
     <ul>
-    <li><img src="/assets/godot.svg" alt=""></li>
-    <li><img src="/assets/svelte.png" alt=""></li>
-    <li><img src="/assets/figma.png" alt=""></li>
+      <li><img src="/assets/godot.svg" alt=""></li>
+      <li><img src="/assets/svelte.png" alt=""></li>
+      <li><img src="/assets/figma.png" alt=""></li>
     </ul>
     <h2>RÉSEAUX</h2>
     <a href="https://portfolio.sciencesky.fr/">https://portfolio.sciencesky.fr/</a>
