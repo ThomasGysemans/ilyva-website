@@ -1,57 +1,43 @@
-<svelte:head>
-	<title>Ilyva</title>
-	<meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</svelte:head>
-
 <script>
-  import Carousel from "./Carousel.svelte";
-  import CreditsThomas from "./Credits_Thomas.svelte";
-  import CreditsNoe from "./Credits_Noe.svelte";
+	import { authors } from "$lib/Authors";
+  import Carousel from "$components/Carousel.svelte";
+	import Author from "$components/Author.svelte";
 </script>
 
 <main>
-	<section class="background_video">
-		<video src="/assets/video.mp4" autoplay loop muted/>
-	</section>
+	<video src="/assets/background-video.mp4" autoplay loop muted />
 	<section id="accueil">
-		<img src="/assets/ilyva_white.png" alt="Ilyva" />
+		<img src="/assets/logos/ilyva_white.png" alt="Ilyva logo" />
 		<h1>JULIEM VOUS SURVEILLE</h1>
 		<p>
-			Un escape game original créé par des étudiants. Échappez-vous du monde parallèle dans lequel
-			vous êtes bloqué(s) en vous exerçant à Bash.
+			Un escape game original créé par des étudiants. Échappez-vous du monde parallèle dans lequel vous êtes bloqué(s) en vous exerçant à Bash.
 		</p>
 	</section>
-  <Carousel/>
+  <Carousel />
   <h1>CRÉÉ PAR ...</h1>
-  <CreditsThomas/>
-  <CreditsNoe/>
+  {#each authors as author (author.firstname)}
+		<Author {author} />
+	{/each}
 </main>
 
-<style>
+<style lang="scss">
 	main {
 		height: inherit;
 		width: inherit;
 		background: none;
 	}
-	.background_video {
-		background: none;
-		position: absolute;
-		height: inherit;
-		width: inherit;
-		z-index: -1;
-	}
 
-  .background_video > video {
-    position: fixed;
+	main > video {
+		position: fixed;
     right: 0;
     bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-  }
+		z-index: -1;
+		width: 100%;
+	}
+
 	p,
-	h1{
-		color: white;
+	h1 {
+		color: #fff;
 	}
 
 	#accueil {
@@ -60,33 +46,28 @@
 		flex-direction: column;
 		height: fit-content;
 		width: 33%;
-		margin:  10% 0 0 15%;
+		margin: 10% 0 0 15%;
 	}
 
 	#accueil > img {
 		display: block;
-		position: static;
+		width: 80%;
 		margin: 0;
-		width: 60%;
 	}
 
 	h1 {
-		display: block;
 		margin: 10% 0 0 15%;
 		height: fit-content;
-		font-family: 'Hack-Regular';
-		font-size: 50px;
-    font-weight: lighter;
+    font-weight: normal; // lighter is not possible with the "Hack" font
+		font-size: 2.2em;
 	}
-#accueil > h1 {
-  margin-left: 0;
-}
-  
+
+	#accueil > h1 {
+		margin-left: 0;
+	}
 
 	#accueil > p {
-		display: block;
 		margin: 10% 0 0 0;
-		font-size: x-large;
-		font-family: 'Hack-Regular';
+		font-size: 1.4em;
 	}
 </style>
