@@ -11,9 +11,9 @@
 
 <button type="button" on:click={onClick} title={screenshot.description} aria-label={screenshot.description}>
   {#if pinned}
-    <img class="pin {side}" src="/assets/icons/pin.png" alt="épingle rouge" />
+    <img class="pin {side}" loading="lazy" src="/assets/icons/pin.png" alt="épingle rouge" />
   {/if}
-  <img class="picture" src="/assets/screenshots/{screenshot.name}" alt={screenshot.description} />
+  <img class="picture" loading="lazy" src="/assets/screenshots/{screenshot.name}" alt={screenshot.description} />
 </button>
 
 <style lang="scss">

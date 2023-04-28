@@ -17,8 +17,8 @@
 		{#each screenshots as screenshot, index (screenshot.name)}
 			<div role="tabpanel">
 				<button type="button" data-index={index} on:click={() => selectScreenshot(index)}>
-					<img src="/assets/illustrations/duct-tape.png" alt="adhésif" />
-					<img src="/assets/screenshots/{screenshot.name}" alt={screenshot.description} />
+					<img loading="lazy" src="/assets/illustrations/duct-tape.png" alt="adhésif" />
+					<img loading="lazy" src="/assets/screenshots/{screenshot.name}" alt={screenshot.description} />
 				</button>
 			</div>
 		{/each}
