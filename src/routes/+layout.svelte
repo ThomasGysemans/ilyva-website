@@ -1,16 +1,12 @@
 <slot />
 
 <style lang="scss">
+  @import "$root";
+
   :global(body) {
     margin: 0;
-    // height: 100vh; // 100vh is wrong because we want to be able to scroll the `body`
-    width: 100%; // 100vw can create some issues and still let some pixels overflow the screen, to avoid!
+    width: 100%;
     overflow-x: hidden;
-  }
-
-  :global(body>div) {
-    height: 100vh;
-    width: inherit;
   }
 
   // let's apply the font on all elements

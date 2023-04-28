@@ -12,7 +12,9 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			$lib: './src/lib',
-			$components: './src/components'
+			$components: './src/components',
+			$root: './src/styles/root.scss',
+			$mixins: './src/styles/mixins.scss'
 		}
 	}
 };

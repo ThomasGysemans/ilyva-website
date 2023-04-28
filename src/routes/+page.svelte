@@ -1,73 +1,89 @@
 <script>
-	import { authors } from "$lib/Authors";
-  import Carousel from "$components/Carousel.svelte";
-	import Author from "$components/Author.svelte";
+	import { faGamepad } from "@fortawesome/free-solid-svg-icons";
+	import Button from "$components/Button.svelte";
+	import SectionWithVideo from "$components/SectionWithVideo.svelte";
+	import SectionMap from "$components/SectionMap.svelte";
+	import Trailer from "$components/Trailer.svelte";
+	import Fa from "svelte-fa";
+
 </script>
 
-<main>
-	<video src="/assets/background-video.mp4" autoplay loop muted />
-	<section id="accueil">
-		<img src="/assets/logos/ilyva_white.png" alt="Ilyva logo" />
+<SectionWithVideo>
+	<div id="accueil">
+		<img src="/assets/illustrations/chains.png" alt="" class="chains" />
+		<img src="/assets/logos/ilyva_white.png" alt="Ilyva logo" class="logo" />
 		<h1>JULIEM VOUS SURVEILLE</h1>
-		<p>
-			Un escape game original créé par des étudiants. Échappez-vous du monde parallèle dans lequel vous êtes bloqué(s) en vous exerçant à Bash.
-		</p>
-	</section>
-  <Carousel />
-  <h1>CRÉÉ PAR ...</h1>
-  {#each authors as author (author.firstname)}
-		<Author {author} />
-	{/each}
-</main>
+		<p>Un escape game original créé par des étudiants. Échappez-vous du monde parallèle dans lequel vous êtes bloqué(s) en vous exerçant à Bash.</p>
+		<Button>
+			<Fa icon={faGamepad} />
+			Jouer maintenant
+		</Button>
+		<div class="container-trailer">
+			<Trailer />
+		</div>
+	</div>
+</SectionWithVideo>
+<SectionMap />
 
 <style lang="scss">
-	main {
-		height: inherit;
-		width: inherit;
-		background: none;
-	}
-
-	main > video {
-		position: fixed;
-    right: 0;
-    bottom: 0;
-		z-index: -1;
-		width: 100%;
-	}
-
-	p,
-	h1 {
+	h1,
+	p {
 		color: #fff;
+		letter-spacing: 1.2px;
 	}
 
 	#accueil {
-		background: none;
-		display: flex;
-		flex-direction: column;
-		height: fit-content;
-		width: 33%;
-		margin: 10% 0 0 15%;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding: 20vh 0 0 15vh;
+		box-sizing: border-box;
+
+		.logo {
+			width: 25%;
+			height: auto;
+			min-width: 200px;
+		}
+
+		h1 {
+			margin: 50px 0;
+			font-weight: normal;
+			font-size: 2.2em;
+		}
+
+		p {
+			text-align: justify;
+			margin: 0 0 50px 0;
+			font-size: 1.3em;
+			max-width: 550px;
+		}
 	}
 
-	#accueil > img {
-		display: block;
-		width: 80%;
-		margin: 0;
+	.chains {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+		z-index: -1;
+		opacity: .3;
 	}
 
-	h1 {
-		margin: 10% 0 0 15%;
-		height: fit-content;
-    font-weight: normal; // lighter is not possible with the "Hack" font
-		font-size: 2.2em;
+	#accueil > :global(.button) {
+		width: 250px;
+		height: 50px;
+		font-size: 17px;
+
+		& > :global(.svelte-fa) {
+			margin-right: 5px;
+		}
 	}
 
-	#accueil > h1 {
-		margin-left: 0;
-	}
-
-	#accueil > p {
-		margin: 10% 0 0 0;
-		font-size: 1.4em;
+	#accueil > .container-trailer {
+		position: absolute;
+		top: 10%;
+		right: 10%;
+		transform: rotateZ(10deg);
 	}
 </style>

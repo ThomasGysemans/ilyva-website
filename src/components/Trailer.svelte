@@ -1,0 +1,73 @@
+<script>
+	import { faPlay } from "@fortawesome/free-solid-svg-icons";
+	import Fa from "svelte-fa";
+
+</script>
+
+<div class="trailer">
+  <div class="overlay layer" />
+  <img class="layer" src="/assets/illustrations/trailer-poster.png" alt="Poster de la bande annonce du jeu Ilyva" />
+  <div class="content layer">
+    <Fa icon={faPlay} />
+  </div>
+</div>
+
+<style lang="scss">
+  @import "$root";
+
+  .trailer {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    width: 400px;
+    height: 250px;
+    border: 1px solid $secondaryColor;
+    box-shadow: 4px 4px 8px rgba($secondaryColor, .7);
+    transition: transform 300ms ease-out;
+
+    &:hover {
+      transform: scale(1.05) rotateZ(-5deg);
+    }
+  }
+
+  .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .overlay {
+    z-index: 5;
+    background-color: rgba($secondaryColor, .4);
+    transition: background-color 200ms ease;
+  }
+
+  .trailer:hover .overlay {
+    background-color: rgba($secondaryColor, .45);
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+
+    & > :global(.svelte-fa) {
+      font-size: 4em;
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      filter: drop-shadow(4px 4px 8px #2E2E2E);
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  img {
+    user-select: none;
+    object-fit: cover;
+    z-index: 4;
+  }
+</style>
