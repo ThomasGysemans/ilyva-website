@@ -6,6 +6,7 @@
 	import Fa from "svelte-fa";
 	import Section from "$components/Section.svelte";
 	import SectionAuthors from "$components/SectionAuthors.svelte";
+	import SectionDownload from "$components/SectionDownload.svelte";
 
 </script>
 
@@ -32,6 +33,7 @@
 </Section>
 <SectionMap />
 <SectionAuthors />
+<SectionDownload />
 
 <style lang="scss">
 	h1,

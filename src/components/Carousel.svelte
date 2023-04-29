@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { screenshots } from "$lib/screenshots";
 	import ManualNavigation from "./ManualNavigation.svelte";
-	import Fa from "svelte-fa";
 
 	let carousel: HTMLElement;
 	let currentScreenshot: number = 0;

@@ -147,7 +147,7 @@
 
   .keyword {
     text-transform: uppercase;
-    @include keyword(#2F281F);
+    @include keyword($videoTextColorForKeywords);
   }
 
   blockquote {
@@ -182,6 +182,7 @@
   // for the ad
   p > a {
     color: #fff;
+    word-wrap: break-word;
   }
 
   .navigation {

@@ -1,4 +1,8 @@
-<section>
+<script lang="ts">
+  export let limitless = false;
+</script>
+
+<section class:limitless>
   <slot />
 </section>
 
@@ -9,5 +13,10 @@
     width: 100%;
     height: 100vh;
 		box-sizing: border-box;
+
+    &.limitless {
+      height: 100%;
+      min-height: 100vh;
+    }
   }
 </style>

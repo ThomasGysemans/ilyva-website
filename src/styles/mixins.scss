@@ -1,11 +1,11 @@
 @import "$root";
 
 // the words with text stroke, in green
-@mixin keyword($color) {
+@mixin keyword($color, $shadowColor: $bashColor) {
   color: $color; // the color of the text should be the same as the color behind it
-  -webkit-text-stroke: 1px $bashColor;
-  text-shadow: -1px 1px 0 $bashColor,
-    1px 1px 0 $bashColor,
-    1px -1px 0 $bashColor,
-    -1px -1px 0 $bashColor;
+  -webkit-text-stroke: 1px $shadowColor;
+  text-shadow: -1px 1px 0 $shadowColor,
+    1px 1px 0 $shadowColor,
+    1px -1px 0 $shadowColor,
+    -1px -1px 0 $shadowColor;
 }
