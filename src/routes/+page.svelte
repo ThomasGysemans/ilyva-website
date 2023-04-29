@@ -45,6 +45,7 @@
 		width: 100%;
 		height: 100%;
 		padding: 20vh 8vw 0 8vw;
+		box-sizing: border-box;
 
 		@media screen and (max-width: 1050px) {
 			padding-left: 5vw;
