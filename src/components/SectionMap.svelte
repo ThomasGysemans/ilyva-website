@@ -3,6 +3,7 @@
 	import { screenshots } from "$lib/screenshots";
 	import ScreenshotComponent from "./Screenshot.svelte";
   import SectionSeparator from "./SectionSeparator.svelte";
+	import Carousel from "./Carousel.svelte";
 	import Line from "./Line.svelte";
 
   let selectedPictureId: number = -1;
@@ -65,19 +66,24 @@
   <section>
     <img src="/assets/illustrations/map-background.png" loading="lazy" alt="" />
     <h1>UN JEU POUR RÉVISER <span class="keyword">BASH</span></h1>
-    {#each screenshots as screenshot, index (screenshot.name)}
-      <div class="container-screenshot" id="screenshot{index}">
-        <ScreenshotComponent
-          screenshot={screenshots[index]}
-          pinned={index === 0 || index === 4}
-          side={index === 4 ? "right" : "left"}
-          on:click={() => selectPicture(index)}
-        />
-        {#if index !== 0 && index !== 4}
-          <Line />
-        {/if}
-      </div>
-    {/each}
+    <div class="map">
+      {#each screenshots as screenshot, index (screenshot.name)}
+        <div class="container-screenshot" id="screenshot{index}">
+          <ScreenshotComponent
+            screenshot={screenshots[index]}
+            pinned={index === 0 || index === 4}
+            side={index === 4 ? "right" : "left"}
+            on:click={() => selectPicture(index)}
+          />
+          {#if index !== 0 && index !== 4}
+            <Line />
+          {/if}
+        </div>
+      {/each}
+    </div>
+    <div class="carousel">
+      <Carousel />
+    </div>
   </section>
 </div>
 
@@ -219,6 +225,20 @@
       left: 0;
       top: 0;
       transform: translate(calc(50vw - 50%), calc(50vh - 50%)) scale(2);
+    }
+  }
+
+  .carousel {
+    display: none;
+  }
+  
+  @media screen and (max-width: 1400px) {
+    .carousel {
+      display: block;
+    }
+
+    .map {
+      display: none;
     }
   }
 </style>

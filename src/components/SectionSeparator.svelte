@@ -4,9 +4,11 @@
 <style lang="scss">
   @import "$root";
 
+  $height: 10vh;
+
   div {
     width: 100%;
-    height: 10vh;
+    height: $height;
     position: absolute;
     left: 0;
     z-index: 100;
@@ -14,7 +16,7 @@
 
   div:nth-child(1) {
     background: linear-gradient(to bottom, transparent 10%, darken($mapBackgroundColor, 5%) 100%);
-    top: -75px;
+    top: -1 * $height;
   }
 
   div:nth-child(2) {

@@ -1,5 +1,5 @@
 <script>
-	import { faGamepad } from "@fortawesome/free-solid-svg-icons";
+	import { faGamepad, faPlay } from "@fortawesome/free-solid-svg-icons";
 	import Button from "$components/Button.svelte";
 	import SectionWithVideo from "$components/SectionWithVideo.svelte";
 	import SectionMap from "$components/SectionMap.svelte";
@@ -14,10 +14,16 @@
 		<img src="/assets/logos/ilyva_white.png" alt="Ilyva logo" class="logo" />
 		<h1>JULIEM VOUS SURVEILLE</h1>
 		<p>Un escape game original créé par des étudiants. Échappez-vous du monde parallèle dans lequel vous êtes bloqué(s) en vous exerçant à Bash.</p>
-		<Button>
+		<Button primary>
 			<Fa icon={faGamepad} />
 			Jouer maintenant
 		</Button>
+		<div class="watch-trailer-button">
+			<Button secondary>
+				<Fa icon={faPlay} />
+				Regarder la bande annonce
+			</Button>
+		</div>
 		<div class="container-trailer">
 			<Trailer />
 		</div>
@@ -36,8 +42,21 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
-		padding: 20vh 0 0 15vh;
+		padding: 20vh 8vw 0 8vw;
 		box-sizing: border-box;
+
+		@media screen and (max-width: 1050px) {
+			padding-left: 5vw;
+			padding-right: 5vw;
+		}
+
+		@media screen and (max-width: 925px) {
+			padding-top: 25vh;
+		}
+
+		@media screen and (max-width: 650px) {
+			padding-left: 3vw;
+		}
 
 		.logo {
 			width: 25%;
@@ -70,8 +89,9 @@
 		opacity: .3;
 	}
 
-	#accueil > :global(.button) {
-		width: 250px;
+	#accueil :global(.button) {
+		max-width: 250px;
+		width: 100%;
 		height: 50px;
 		font-size: 17px;
 
@@ -84,6 +104,65 @@
 		position: absolute;
 		top: 10%;
 		right: 10%;
-		transform: rotateZ(10deg);
+		transform: rotateZ(5deg);
+		max-width: 430px;
+		width: 100%;
+		height: 260px;
+
+		@media screen and (max-width: 1000px) {
+			max-width: 350px;
+			top: 50px;
+			right: 50px;
+			height: 240px;
+		}
+
+		@media screen and (max-width: 750px) {
+			max-width: 300px;
+			height: 200px;
+		}
+	}
+
+	@media screen and (max-width: 1145px) {
+		#accueil h1 {
+			font-size: 1.9em;
+		}
+
+		#accueil p {
+			font-size: 1.1em;
+		}
+	}
+
+	.watch-trailer-button {
+		display: none;
+	}
+
+	@media screen and (max-width: 625px) {
+		#accueil > .container-trailer {
+			display: none;
+		}
+
+		.watch-trailer-button {
+			margin-top: 30px;
+			display: block;
+		}
+
+		#accueil :global(.button) {
+			font-size: 15px;
+			max-width: 280px;
+		}
+
+		#accueil {
+			padding: 10vh 5vw 0 5vw;
+		}
+	}
+
+	@media screen and (max-width: 400px) {
+		#accueil h1 {
+			font-size: 1.7em;
+		}
+
+		#accueil p {
+			font-size: 1.0em;
+		}
 	}
 </style>

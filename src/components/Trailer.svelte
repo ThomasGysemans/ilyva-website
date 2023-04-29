@@ -19,8 +19,7 @@
     cursor: pointer;
     position: relative;
     width: 100%;
-    width: 400px;
-    height: 250px;
+    height: 100%;
     border: 1px solid $secondaryColor;
     box-shadow: 4px 4px 8px rgba($secondaryColor, .7);
     transition: transform 300ms ease-out;

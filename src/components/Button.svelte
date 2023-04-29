@@ -2,6 +2,8 @@
 	import { createEventDispatcher } from "svelte";
 
   export let href: string | null = null;
+  export let primary: boolean = false;
+  export let secondary: boolean = false;
 
   const dispatch = createEventDispatcher();
   function onClick(e: Event) {
@@ -12,17 +14,34 @@
 </script>
 
 {#if href !== null}
-  <a class="button" {href} on:click={onClick}>
+  <a class="button" {href} on:click={onClick} class:primary class:secondary>
     <slot />
   </a>
 {:else}
-  <button class="button" type="button" on:click={onClick}>
+  <button class="button" type="button" on:click={onClick} class:primary class:secondary>
     <slot />
   </button>
 {/if}
 
 <style lang="scss">
   @import "$root";
+
+  a,
+  button {
+    --color: #{$primaryColor};
+    --shadow-color: #{rgba($primaryColor, .4)};
+    --background-color: #{rgba($primaryColor, .3)};
+    --ripple-color: #{rgba($primaryColor, .5)};
+    --ripple-end-color: #{rgba($primaryColor, .1)};
+
+    &.secondary {
+      --color: #{$secondaryColor};
+      --shadow-color: #{rgba($secondaryColor, .4)};
+      --background-color: #{rgba($secondaryColor, .3)};
+      --ripple-color: #{rgba($secondaryColor, .5)};
+      --ripple-end-color: #{rgba($secondaryColor, .1)};
+    }
+  }
 
   a {
     text-decoration: none;
@@ -32,9 +51,9 @@
   .button {
     cursor: pointer;
     color: #fff;
-    border: 1px solid $primaryColor;
-    background-color: rgba($primaryColor, .3);
-    box-shadow: 4px 4px 4px rgba($primaryColor, .4);
+    border: 1px solid var(--color);
+    background-color: var(--background-color);
+    box-shadow: 4px 4px 4px var(--shadow-color);
     background-position: center;
     outline-color: transparent;
     transition:
@@ -43,12 +62,12 @@
 
     &:hover,
     &:focus {
-      box-shadow: 2px 2px 4px rgba($primaryColor, .5);
-      background: rgba($primaryColor, .5) radial-gradient(circle, transparent 1%, rgba($primaryColor, .1) 1%) center/15000%;
+      box-shadow: 2px 2px 4px var(--ripple-color);
+      background: var(--ripple-color) radial-gradient(circle, transparent 1%, var(--ripple-end-color) 1%) center/15000%;
     }
 
     &:active {
-      background-color: rgba($primaryColor, .5);
+      background-color: var(--ripple-color);
       background-size: 100%;
       transition: background 0s;
     }

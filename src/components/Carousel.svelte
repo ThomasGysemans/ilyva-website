@@ -1,42 +1,89 @@
 <script lang="ts">
 	import { screenshots } from "$lib/screenshots";
+	import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+	import Fa from "svelte-fa";
 
 	let carousel: HTMLElement;
+	let currentScreenshot: number = 0;
+
+	// Basically, we get the selected screenshot here,
+	// and then move our carousel towards the absolute position of the target, on the x-axis.
+	// Note that actually the `left` property from the bounding rect is relative to the screen's border,
+	// not to the beginning of the parent's horizontal scrolling.
+	// Therefore, we calculate the width of the selected element,
+	// and multiply it by its position among the others.
+	// Which gives us its actual x position relative to the beginning of the parent's scrolling.
+	// However, so that we can go back easily, if we select the same element twice,
+	// then we just move to the one before that.
+
+	function getWidthOfIndex(index: number) {
+		const selectedScreenshot = carousel.querySelector("button[data-index='" + index + "']")!.parentElement as HTMLDivElement;
+		const rect = selectedScreenshot.getBoundingClientRect();
+		return rect.width;
+	}
 
 	function selectScreenshot(index: number) {
-		// Basically, we get the selected screenshot here,
-		// and then move our carousel towards the absolute position of the target, on the x-axis.
-		const selectedScreenshot = carousel.querySelector("button[data-index='" + index + "']")!.parentElement as HTMLDivElement;
-		carousel.scrollLeft = selectedScreenshot.getBoundingClientRect().left;
+		if (index <= currentScreenshot) {
+			if (index > 0) {
+				currentScreenshot = index - 1;
+			}
+		} else {
+			currentScreenshot = index;
+		}
+		moveToPosition(currentScreenshot);
+	}
+
+	/**
+	 * Moves towards the position of the picture whose index is `index`.
+	 * @param index The index of the selected picture.
+	 */
+	function moveToPosition(index: number) {
+		console.log("index =", index);
+		const width = getWidthOfIndex(index);
+		let amount: number;
+		amount = width * index;
+		carousel.scrollLeft = amount;
+	}
+
+	// manual navigation for smaller screens
+
+	function nextScreenshot() {
+		if (currentScreenshot + 1 < screenshots.length) {
+			moveToPosition(++currentScreenshot);
+		}
+	}
+	
+	function previousScreenshot() {
+		if (currentScreenshot - 1 >= 0) {
+			moveToPosition(--currentScreenshot);
+		}
 	}
 </script>
 
-<section>
-	<h1>UN JEU POUR RÉVISER BASH</h1>
-	<div bind:this={carousel} class="carousel">
-		{#each screenshots as screenshot, index (screenshot.name)}
-			<div role="tabpanel">
-				<button type="button" data-index={index} on:click={() => selectScreenshot(index)}>
-					<img loading="lazy" src="/assets/illustrations/duct-tape.png" alt="adhésif" />
-					<img loading="lazy" src="/assets/screenshots/{screenshot.name}" alt={screenshot.description} />
-				</button>
-			</div>
-		{/each}
+<div bind:this={carousel} class="carousel">
+	{#each screenshots as screenshot, index (screenshot.name)}
+		<div role="tabpanel">
+			<button type="button" data-index={index} on:click={() => selectScreenshot(index)}>
+				<img loading="lazy" src="/assets/illustrations/duct-tape.png" alt="adhésif" />
+				<img loading="lazy" src="/assets/screenshots/{screenshot.name}" alt={screenshot.description} />
+			</button>
+		</div>
+	{/each}
+</div>
+<p class="explanation-horizontal-navigation">Défile les images en appuyant sur elles</p>
+<div class="manual-navigation">
+	<p>Défile les images avec les flèches ci-dessous :</p>
+	<div class="arrows">
+		<button type="button" on:click={previousScreenshot}>
+			<Fa icon={faAngleLeft} />
+		</button>
+		<button type="button" on:click={nextScreenshot}>
+			<Fa icon={faAngleRight} />
+		</button>
 	</div>
-</section>
+</div>
 
 <style lang="scss">
-	section {
-		margin: 30% 0;
-	}
-
-	h1 {
-		color: #fff;
-		margin: 50px 0 50px 15%;
-		font-size: 40px;
-		font-weight: normal;
-	}
-
 	.carousel {
 		overflow: hidden;
 		display: flex;
@@ -47,12 +94,13 @@
 	}
 
 	.carousel > div {
-		width: 50%;
+		width: 65%;
+		min-width: 400px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
-
+	
 	.carousel > div button {
 		border: none;
 		background-color: transparent;
@@ -61,15 +109,15 @@
 		display: flex;
 		justify-content: center;
 		width: 600px;
-		margin: 60px;
+		margin: 30px;
 	}
 
 	.carousel > div:nth-of-type(2n) {
-		transform: rotate(5deg);
+		transform: rotate(4deg);
 	}
 
 	.carousel > div:nth-of-type(2n + 1) {
-		transform: rotate(-5deg);
+		transform: rotate(-4deg);
 	}
 
 	.carousel > div button img {
@@ -89,5 +137,56 @@
 		height: 100%;
 		display: block;
 		border: 5px solid #fff;
+	}
+
+	p {
+		color: #fff;
+		text-align: center;
+	}
+
+	.manual-navigation {
+		display: none;
+	}
+
+	.arrows {
+		width: 100%;
+		text-align: center;
+	}
+
+	.arrows button {
+		margin: 0 5px;
+		border-radius: 5px;
+		cursor: pointer;
+		border: 1px solid #fff;
+		color: #fff;
+		background-color: transparent;
+		height: 60px;
+		width: 60px;
+		transition: background-color 200ms ease;
+
+		&:hover,
+		&:focus {
+			background-color: rgba(#fff, .1);
+		}
+	}
+
+	@media screen and (max-width: 550px) {
+		.explanation-horizontal-navigation {
+			display: none;
+		}
+
+		.manual-navigation {
+			display: block;
+		}
+
+		// We don't want the user to be able to click the buttons anymore,
+		// because it would only create confusion on such a tiny screen.
+		div[role] > button {
+			pointer-events: none;
+		}
+
+		.carousel > div {
+			transform: rotate(0deg)!important;
+		}
 	}
 </style>
