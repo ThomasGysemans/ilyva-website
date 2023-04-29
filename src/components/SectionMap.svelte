@@ -59,7 +59,7 @@
 </script>
 
 <div class="section-with-separator">
-  <SectionSeparator />
+  <SectionSeparator place="top" />
   <div class="big-screen" class:shown={selectedPictureId !== -1} on:click={removePicture} on:keydown={removePicture}>
     <img bind:this={bigScreenshot} src="/assets/screenshots/{getScreenshot(selectedPictureId)?.name ?? ""}" alt={getScreenshot(selectedPictureId)?.description ?? ""}>
   </div>
@@ -85,6 +85,7 @@
       <Carousel />
     </div>
   </section>
+  <SectionSeparator place="bottom" />
 </div>
 
 <style lang="scss">
@@ -92,6 +93,7 @@
 
   .section-with-separator {
     position: relative;
+    z-index: 2; // in front of the video's shader
   }
 
   section {

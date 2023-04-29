@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { screenshots } from "$lib/screenshots";
-	import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+	import ManualNavigation from "./ManualNavigation.svelte";
 	import Fa from "svelte-fa";
 
 	let carousel: HTMLElement;
@@ -74,12 +74,10 @@
 <div class="manual-navigation">
 	<p>Défile les images avec les flèches ci-dessous :</p>
 	<div class="arrows">
-		<button type="button" on:click={previousScreenshot}>
-			<Fa icon={faAngleLeft} />
-		</button>
-		<button type="button" on:click={nextScreenshot}>
-			<Fa icon={faAngleRight} />
-		</button>
+		<ManualNavigation
+			on:previous={previousScreenshot}
+			on:next={nextScreenshot}
+		/>
 	</div>
 </div>
 
@@ -151,23 +149,6 @@
 	.arrows {
 		width: 100%;
 		text-align: center;
-	}
-
-	.arrows button {
-		margin: 0 5px;
-		border-radius: 5px;
-		cursor: pointer;
-		border: 1px solid #fff;
-		color: #fff;
-		background-color: transparent;
-		height: 60px;
-		width: 60px;
-		transition: background-color 200ms ease;
-
-		&:hover,
-		&:focus {
-			background-color: rgba(#fff, .1);
-		}
 	}
 
 	@media screen and (max-width: 550px) {

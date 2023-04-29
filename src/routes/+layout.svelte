@@ -1,3 +1,8 @@
+<script>
+	import BackgroundVideo from "$components/BackgroundVideo.svelte";
+</script>
+
+<BackgroundVideo />
 <slot />
 
 <style lang="scss">

@@ -1,14 +1,15 @@
 <script>
 	import { faGamepad, faPlay } from "@fortawesome/free-solid-svg-icons";
 	import Button from "$components/Button.svelte";
-	import SectionWithVideo from "$components/SectionWithVideo.svelte";
 	import SectionMap from "$components/SectionMap.svelte";
 	import Trailer from "$components/Trailer.svelte";
 	import Fa from "svelte-fa";
+	import Section from "$components/Section.svelte";
+	import SectionAuthors from "$components/SectionAuthors.svelte";
 
 </script>
 
-<SectionWithVideo>
+<Section>
 	<div id="accueil">
 		<img loading="lazy" src="/assets/illustrations/chains.png" alt="" class="chains" />
 		<img src="/assets/logos/ilyva_white.png" alt="Ilyva logo" class="logo" />
@@ -28,8 +29,9 @@
 			<Trailer />
 		</div>
 	</div>
-</SectionWithVideo>
+</Section>
 <SectionMap />
+<SectionAuthors />
 
 <style lang="scss">
 	h1,
@@ -39,11 +41,10 @@
 	}
 
 	#accueil {
-		position: relative;
+		// display: contents;
 		width: 100%;
 		height: 100%;
 		padding: 20vh 8vw 0 8vw;
-		box-sizing: border-box;
 
 		@media screen and (max-width: 1050px) {
 			padding-left: 5vw;
