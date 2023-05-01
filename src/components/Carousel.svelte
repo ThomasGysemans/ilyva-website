@@ -87,11 +87,13 @@
 		align-items: center;
 		-webkit-overflow-scrolling: touch; // for iOS
 		scroll-behavior: smooth;
+		padding: 20px 0;
+		box-sizing: border-box;
 	}
 
 	.carousel > div {
 		width: 100%;
-		max-width: 750px;
+		max-width: 900px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
