@@ -37,7 +37,6 @@
 	 * @param index The index of the selected picture.
 	 */
 	function moveToPosition(index: number) {
-		console.log("index =", index);
 		const width = getWidthOfIndex(index);
 		let amount: number;
 		amount = width * index;
@@ -91,8 +90,8 @@
 	}
 
 	.carousel > div {
-		width: 65%;
-		min-width: 400px;
+		width: 100%;
+		max-width: 750px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -125,7 +124,7 @@
 		position: absolute;
 		width: 100px;
 		opacity: 0.4;
-		top: 10px;
+		top: -10px;
 		transform: rotate(-45deg);
 	}
 
