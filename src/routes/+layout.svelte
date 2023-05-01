@@ -20,6 +20,10 @@
     font-family: "Hack", sans-serif; // 'sans-serif' is the default font family applied while the main one is loading
   }
 
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+
   // here, the local() function will go look into the user's files for the desired font family.
   // If it is not found, then our font family is used (the one in `/assets/fonts/`).
   // We also specify a weight so that the right font is applied according to the weight of the given text.

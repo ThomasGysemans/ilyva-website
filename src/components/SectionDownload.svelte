@@ -1,5 +1,6 @@
 <script>
 	import { faGamepad } from "@fortawesome/free-solid-svg-icons";
+	import { faApple, faWindows, faLinux } from "@fortawesome/free-brands-svg-icons";
 	import Button from "./Button.svelte";
   import Section from "./Section.svelte";
 	import TextMirror from "./TextMirror.svelte";
@@ -8,13 +9,13 @@
 </script>
 
 <Section limitless>
-  <div class="container-section">
+  <div id="play" class="container-section">
     <img src="/assets/illustrations/poster.jpg" alt="Affiche du jeu Ilyva" />
     <div class="content">
       <TextMirror>
         Qu'attendez-vous ?
       </TextMirror>
-      <Button primary>
+      <Button href="https://yoshiip.xyz/ilyva/html" blank primary>
         <Fa icon={faGamepad} />
         Jouer en ligne
       </Button>
@@ -22,10 +23,20 @@
         <b>Ou bien...</b>
         <h3>installez le jeu</h3>
       </div>
-      <Button primary>
-        <Fa icon={faGamepad} />
-        Télécharger (Windows)
-      </Button>
+      <div class="container-downloads-button">
+        <Button href="https://yoshiip.xyz/ilyva/win.zip" download primary>
+          <Fa icon={faWindows} />
+          Windows
+        </Button>
+        <Button href="https://yoshiip.xyz/ilyva/linux.zip" download primary>
+          <Fa icon={faLinux} />
+          Linux
+        </Button>
+        <Button href="https://yoshiip.xyz/ilyva/mac.zip" download primary>
+          <Fa icon={faApple} />
+          Mac
+        </Button>
+      </div>
       <p>Pour des raisons de performances, certaines fonctionnalités présentes dans la version téléchargeable ne sont pas dans la version Web. Pour une expérience optimale, nous vous recommandons d’installer le jeu.</p>
     </div>
   </div>
@@ -65,8 +76,9 @@
       padding: 0 5%;
     }
 
-    & > :global(button) {
+    :global(a) {
       width: 100%;
+      max-width: 250px;
       height: 50px;
       font-size: 16px;
     }
@@ -150,7 +162,7 @@
       font-size: .85em;
     }
 
-    .content > :global(button) {
+    .content :global(button) {
       height: 50px;
       font-size: 14px;
     }
@@ -169,9 +181,36 @@
       font-size: .8em;
     }
 
-    .content > :global(button) {
+    .content :global(button) {
       height: 50px;
       font-size: 13px;
+    }
+  }
+
+  .container-downloads-button {
+    display: flex;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    :global(a) {
+      width: 150px;
+      height: 50px;
+      margin: 0 10px;
+      font-size: 15px;
+
+      @media screen and (max-width: 1000px) {
+        width: 120px;
+        font-size: 14px;
+      }
+
+      @media screen and (max-width: 600px) {
+        margin: 10px 0;
+        font-size: 13px;
+      }
     }
   }
 </style>

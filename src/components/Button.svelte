@@ -4,6 +4,8 @@
   export let href: string | null = null;
   export let primary: boolean = false;
   export let secondary: boolean = false;
+  export let download: boolean = false;
+  export let blank: boolean = false;
 
   const dispatch = createEventDispatcher();
   function onClick(e: Event) {
@@ -14,9 +16,15 @@
 </script>
 
 {#if href !== null}
-  <a class="button" {href} on:click={onClick} class:primary class:secondary>
-    <slot />
-  </a>
+  {#if download}
+    <a class="button" download {href} target="_blank" on:click={onClick} class:primary class:secondary>
+      <slot />
+    </a>
+  {:else}
+    <a class="button" {href} target={blank ? "_blank" : ""} on:click={onClick} class:primary class:secondary>
+      <slot />
+    </a>
+  {/if}
 {:else}
   <button class="button" type="button" on:click={onClick} class:primary class:secondary>
     <slot />
@@ -46,6 +54,13 @@
   a {
     text-decoration: none;
     display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > :global(.svelte-fa) {
+      margin-right: 10px;
+    }
   }
 
   .button {

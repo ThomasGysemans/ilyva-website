@@ -16,7 +16,7 @@
 		<img src="/assets/logos/ilyva_white.png" alt="Ilyva logo" class="logo" />
 		<h1>JULIEM VOUS SURVEILLE</h1>
 		<p>Un escape game original créé par des étudiants. Échappez-vous du monde parallèle dans lequel vous êtes bloqué(s) en vous exerçant à Bash.</p>
-		<Button primary>
+		<Button href="#play" primary>
 			<Fa icon={faGamepad} />
 			Jouer maintenant
 		</Button>
