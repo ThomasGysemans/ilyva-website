@@ -243,5 +243,15 @@
       display: none;
     }
   }
+
+  @media screen and (min-width: 1500px) {
+    .carousel {
+      display: block;
+    }
+
+    .map {
+      display: none;
+    }
+  }
 </style>
 
