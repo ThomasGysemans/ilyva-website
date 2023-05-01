@@ -4,4 +4,6 @@ The Ilyva project is a school project made with friends. The goal of this game i
 
 Here, the website where users can play the game, or download it.
 
-**Work in progres...**
+The website is online : [https://ilyva.sciencesky.fr/](https://ilyva.sciencesky.fr/).
+
+The game's repo is on [Yoshiip](https://github.com/Yoshiip/ilyva)'s account.
