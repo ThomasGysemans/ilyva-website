@@ -106,7 +106,7 @@
 		padding: 0;
 		display: flex;
 		justify-content: center;
-		width: 600px;
+		width: 650px;
 		margin: 30px;
 	}
 
@@ -151,7 +151,7 @@
 		text-align: center;
 	}
 
-	@media screen and (max-width: 550px) {
+	@media screen and (max-width: 820px) {
 		.explanation-horizontal-navigation {
 			display: none;
 		}
@@ -168,6 +168,10 @@
 
 		.carousel > div {
 			transform: rotate(0deg)!important;
+		}
+
+		.carousel > div button {
+			width: 550px;
 		}
 	}
 </style>
