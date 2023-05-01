@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { faGithub } from "@fortawesome/free-brands-svg-icons";
 	import { authors } from "$lib/Authors";
 	import getRandomInteger from "$lib/getRandomInteger";
 	import ManualNavigation from "./ManualNavigation.svelte";
   import Section from "./Section.svelte";
+	import Fa from "svelte-fa";
 
   let selectedAuthorIndex = getRandomInteger(0, authors.length);
 
@@ -39,6 +41,9 @@
           on:previous={previousAuthor}
           on:next={nextAuthor}
         />
+        <a href="https://github.com/ThomasGysemans/ilyva-website" target="_blank">
+          <Fa icon={faGithub} />
+        </a>
       </div>
     </div>
     <div class="set">
@@ -187,6 +192,25 @@
 
   .navigation {
     margin-top: 30px;
+    display: flex;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      color: #fff;
+      opacity: .8;
+      text-decoration: none;
+      font-size: 25px;
+      transition: opacity 200ms ease;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
+    }
   }
 
   .set {
