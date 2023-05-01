@@ -8,11 +8,11 @@ export const screenshots = [
     description: "Menu principal du jeu Ilyva"
   },
   {
-    name: "chiba.jpg",
+    name: "chiba-3D.jpg",
     description: "Épreuve Chiba du jeu Ilyva"
   },
   {
-    name: "saint-philibert.jpg",
+    name: "saint-philibert-3D.jpg",
     description: "Épreuve Saint-Philibert du jeu Ilyva"
   },
   {
