@@ -93,7 +93,6 @@
   }
 
   .container-loader {
-    border: 1px solid red;
     height: 100%;
     display: flex;
     justify-content: center;
