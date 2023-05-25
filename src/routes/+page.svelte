@@ -1,12 +1,12 @@
 <script>
 	import { faGamepad, faPlay } from "@fortawesome/free-solid-svg-icons";
-	import Button from "$components/Button.svelte";
+	import SectionDownload from "$components/SectionDownload.svelte";
+	import SectionAuthors from "$components/SectionAuthors.svelte";
 	import SectionMap from "$components/SectionMap.svelte";
 	import Trailer from "$components/Trailer.svelte";
-	import Fa from "svelte-fa";
 	import Section from "$components/Section.svelte";
-	import SectionAuthors from "$components/SectionAuthors.svelte";
-	import SectionDownload from "$components/SectionDownload.svelte";
+	import Button from "$components/Button.svelte";
+	import Fa from "svelte-fa";
 
 </script>
 
@@ -21,7 +21,7 @@
 			Jouer maintenant
 		</Button>
 		<div class="watch-trailer-button">
-			<Button secondary>
+			<Button secondary href="https://www.youtube.com/watch?v=CCTnriUSgkc" blank>
 				<Fa icon={faPlay} />
 				Regarder la bande annonce
 			</Button>

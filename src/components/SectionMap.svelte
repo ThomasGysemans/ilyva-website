@@ -61,7 +61,10 @@
 <div class="section-with-separator">
   <SectionSeparator place="top" />
   <div class="big-screen" class:shown={selectedPictureId !== -1} on:click={removePicture} on:keydown={removePicture}>
-    <img bind:this={bigScreenshot} src="/assets/screenshots/{getScreenshot(selectedPictureId)?.name ?? ""}" alt={getScreenshot(selectedPictureId)?.description ?? ""}>
+    {#if selectedPictureId !== -1}
+      {@const selectedPicture = getScreenshot(selectedPictureId)}
+      <img bind:this={bigScreenshot} src="/assets/screenshots/{selectedPicture?.name}" alt={selectedPicture?.description ?? ""}>
+    {/if}
   </div>
   <section>
     <img src="/assets/illustrations/map-background.png" loading="lazy" alt="" />
