@@ -9,6 +9,7 @@
   let selectedPictureId: number = -1;
   let previousPictureId: number = -1;
   let bigScreenshot: HTMLImageElement;
+  $: selectedScreenshot = getScreenshot(selectedPictureId);
   
   function selectPicture(id: number) {
     selectedPictureId = id;
@@ -61,10 +62,7 @@
 <div class="section-with-separator">
   <SectionSeparator place="top" />
   <div class="big-screen" class:shown={selectedPictureId !== -1} on:click={removePicture} on:keydown={removePicture}>
-    {#if selectedPictureId !== -1}
-      {@const selectedPicture = getScreenshot(selectedPictureId)}
-      <img bind:this={bigScreenshot} src="/assets/screenshots/{selectedPicture?.name}" alt={selectedPicture?.description ?? ""}>
-    {/if}
+    <img bind:this={bigScreenshot} src={selectedScreenshot === null ? "" : "/assets/screenshots/" + selectedScreenshot.name} alt={selectedScreenshot?.description ?? ""}>
   </div>
   <section>
     <img src="/assets/illustrations/map-background.png" loading="lazy" alt="" />
@@ -96,7 +94,7 @@
 
   .section-with-separator {
     position: relative;
-    z-index: 2; // in front of the video's shader
+    z-index: 3; // in front of the video's shader AND in front of the credits page
   }
 
   section {
