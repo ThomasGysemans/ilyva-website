@@ -1,12 +1,19 @@
 <script lang="ts">
 	import { faGithub } from "@fortawesome/free-brands-svg-icons";
 	import { authors } from "$lib/Authors";
+	import { onMount } from "svelte";
 	import getRandomInteger from "$lib/getRandomInteger";
 	import ManualNavigation from "./ManualNavigation.svelte";
   import Section from "./Section.svelte";
 	import Fa from "svelte-fa";
 
+  interface LoadedPicture {
+    userId: string;
+    url: string;
+  }
+
   let selectedAuthorIndex = getRandomInteger(0, authors.length);
+  let loadedPictures: LoadedPicture[] = [];
 
   function previousAuthor() {
     if (selectedAuthorIndex - 1 >= 0) {
@@ -21,6 +28,13 @@
   }
 
   $: selectedAuthor = authors[selectedAuthorIndex];
+
+  onMount(async () => {
+    const res = await fetch("/api/avatars?ids=" + authors.map(a => a.userId).join(','));
+    if (res.ok) {
+      loadedPictures = await res.json();
+    }
+  });
 </script>
 
 <Section>
@@ -50,14 +64,17 @@
       <div class="authors">
         <div class="list">
           {#each authors.filter((_, i) => i !== selectedAuthorIndex) as author, index (author.firstname)}
-            <button type="button" id="author{index}" on:click={() => selectedAuthorIndex = authors.findIndex(a => a.firstname === author.firstname)}>
-              <img loading="lazy" src="{author.avatar}" alt="Photo de profil de {author.firstname + " " + author.lastname}" />
+            {@const picture = loadedPictures.find(l => l.userId === author.userId)}
+            <button type="button" id="author{index}" on:click={() => selectedAuthorIndex = authors.findIndex(a => a.firstname === author.firstname)} title={author.firstname}>
+              {#if picture != undefined}
+                <img loading="lazy" src="{picture.url}" alt="Photo de profil de {author.firstname + " " + author.lastname}" />
+              {/if}
             </button>
           {/each}
         </div>
         <div class="author">
           <img src="/assets/icons/doodle.png" alt="Griboullage" />
-          <img src="{selectedAuthor.avatar}" alt="Avatar de {selectedAuthor.firstname + " " + selectedAuthor.lastname}">
+          <img src="{loadedPictures.find(l => l.userId === selectedAuthor.userId)?.url ?? ""}" alt="Avatar de {selectedAuthor.firstname + " " + selectedAuthor.lastname}">
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ declare global {
 		lastname: string;
 		quote: string;
 		ad?: string;
-		avatar: string; // the name of our default avatar's file
+		userId: string;
 	}
 
 	interface Screenshot {
