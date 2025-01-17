@@ -15,7 +15,7 @@
       <TextMirror>
         Qu'attendez-vous ?
       </TextMirror>
-      <Button href="https://yoshiip.xyz/ilyva/html" blank primary>
+      <Button href="https://aymeri.dev/games/ilyva/" blank primary>
         <Fa icon={faGamepad} />
         Jouer en ligne
       </Button>
@@ -24,15 +24,15 @@
         <h3>installez le jeu</h3>
       </div>
       <div class="container-downloads-button">
-        <Button href="https://yoshiip.xyz/ilyva/win.zip" download primary>
+        <Button href="https://aymeri.dev/games/ilyva/win.zip" download primary>
           <Fa icon={faWindows} />
           Windows
         </Button>
-        <Button href="https://yoshiip.xyz/ilyva/linux.zip" download primary>
+        <Button href="https://aymeri.dev/games/ilyva/linux.zip" download primary>
           <Fa icon={faLinux} />
           Linux
         </Button>
-        <Button href="https://yoshiip.xyz/ilyva/mac.zip" download primary>
+        <Button href="https://aymeri.dev/games/ilyva/mac.zip" download primary>
           <Fa icon={faApple} />
           Mac
         </Button>

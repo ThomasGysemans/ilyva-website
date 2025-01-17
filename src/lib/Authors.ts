@@ -3,7 +3,7 @@ export const authors = [
     firstname: "Aymeri",
     lastname: "Tourneur",
     userId: "113961217378222087",
-    ad: "https://yoshiip.xyz",
+    ad: "https://aymeri.dev/",
     quote: "Le G.O.A.T en personne. J'ai conçu une bonne partie du jeu sur Godot. Godot est juste le meilleur truc, y a pas mieux, c'est juste LA masterclass."
   },
   {
